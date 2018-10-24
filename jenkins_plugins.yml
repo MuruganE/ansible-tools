@@ -1,0 +1,10 @@
+#
+# Example of how to authenticate
+#
+- name: Install plugin
+  jenkins_plugin:
+    name: build-pipeline-plugin
+    state: present
+    url_username: admin
+    url_password: password
+    url: http://localhost:8080
