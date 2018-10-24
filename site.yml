@@ -1,6 +1,6 @@
 ---
 - hosts: localhost  
   roles:
-      - role: murugane.ansible_role_git
-      #- role: MuruganE.ansible-role-git
-      #- role: MuruganE.ansible-role-maven
+      #- role: murugane.ansible_role_git
+      - role: ansible-role-git
+      - role: ansible-role-maven
