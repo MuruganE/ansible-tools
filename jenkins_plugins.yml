@@ -7,7 +7,16 @@
   - name: Install plugin
     jenkins_plugin:
       name: CCM
-      #state: present
       url_username: admin
       url_password: password
       url: http://localhost:8080
+  
+  - name: Check if restart is required by any of the versioned plugins
+    set_fact:
+      jenkins_restart_required: yes
+  
+  - name: Restart Jenkins if required
+    service:
+      name: jenkins
+      state: restarted
+    when: jenkins_restart_required
