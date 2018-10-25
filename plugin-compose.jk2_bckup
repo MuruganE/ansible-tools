@@ -1,0 +1,8 @@
+version: '2'
+services:
+ 
+{% for itm in groups['Services'] %}   
+    name: {{ hostvars[itm].inventory_hostname }}   
+    state: {{ hostvars[itm].state }}
+{% endfor %}
+

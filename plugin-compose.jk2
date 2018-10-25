@@ -1,24 +1,21 @@
-
-# Example of how to authenticate
 ---
 - hosts: localhost
 
   tasks:
+  {% for itm in groups['Services'] %}
+  
   - name: Install plugin
-    jenkins_plugin:
-      name: NAnt 
-      url_username: admin
-      url_password: password
-      url: http://localhost:8080
-
-  - name: Install plugin pipeline
-    jenkins_plugin:
-      name: MSTest
+    jenkins_plugin:  
+      name: {{ hostvars[itm].inventory_hostname }}
+      url_username: {{ host_user }}
+      url_password: {{ host_pwd}}
+      url: {{ host_url }}
+  {% endfor %}
 
   - name: Check if restart is required by any of the versioned plugins
     set_fact:
       jenkins_restart_required: yes
-  
+
   - name: Restart Jenkins if required
     service:
       name: jenkins

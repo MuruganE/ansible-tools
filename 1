@@ -1,0 +1,18 @@
+version: '2'
+services:
+ 
+{% for itm in groups['Services'] %}
+    name:{{ itm }}  
+    
+{% if hostvars[itm].provArgs  is defined %}
+    args:
+	{% for key, value in  hostvars[itm].provArgs.iteritems() %}
+        	{{ key }}: {{ value }}
+		version: {{ value }}
+       
+	{% endfor %}
+    {% else %}
+	 Service id=hostvars[itm]
+    {% endif %}
+{% endfor %}
+

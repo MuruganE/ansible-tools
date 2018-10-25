@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+
+  tasks:
+  - name: Generating docker_compose file
+    template: 
+      src: plugin-compose.jk2
+      dest: "init_plugin.yml"
