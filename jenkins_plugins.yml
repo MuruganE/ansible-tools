@@ -6,14 +6,19 @@
   tasks:
   - name: Install plugin
     jenkins_plugin:
-      name: NAnt 
-      url_username: admin
+      name: MSBuild 
+      state: present
+      url_username: admin 
       url_password: password
       url: http://localhost:8080
 
-  - name: Install plugin pipeline
+  - name: Uninstall plugin
     jenkins_plugin:
-      name: MSTest
+      name: CCM
+      state: absent
+      url_username: admin
+      url_password: password
+      url: http://localhost:8080
 
   - name: Check if restart is required by any of the versioned plugins
     set_fact:

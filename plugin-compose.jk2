@@ -7,6 +7,7 @@
   - name: Install plugin
     jenkins_plugin:  
       name: {{ hostvars[itm].inventory_hostname }}
+      state: {{ hostvars[itm].state }}
       url_username: "{{ host_user }}"
       url_password: "{{ host_pwd}}"
       url: "{{ host_url }}"
