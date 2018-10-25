@@ -7,9 +7,9 @@
   - name: Install plugin
     jenkins_plugin:  
       name: {{ hostvars[itm].inventory_hostname }}
-      url_username: {{ host_user }}
-      url_password: {{ host_pwd}}
-      url: {{ host_url }}
+      url_username: "{{ host_user }}"
+      url_password: "{{ host_pwd}}"
+      url: "{{ host_url }}"
   {% endfor %}
 
   - name: Check if restart is required by any of the versioned plugins
