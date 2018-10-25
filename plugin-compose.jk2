@@ -19,8 +19,5 @@
   - name: Restart Jenkins if required
     service:
       name: jenkins
-      state: restarted
-      url_username: "{{ host_user }}"
-      url_password: "{{ host_pwd}}"
-      url: "{{ host_url }}"
+      state: restarted      
     when: jenkins_restart_required
