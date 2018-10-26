@@ -1,6 +1,6 @@
 ---
 - hosts: localhost  
   roles:
-      #- role: murugane.ansible_role_git
       - role: ansible-role-git
       - role: ansible-role-maven
+      - role: ansible-sonarqube-scanner

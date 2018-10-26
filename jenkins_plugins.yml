@@ -6,7 +6,7 @@
   tasks:
   - name: Install plugin
     jenkins_plugin:
-      name: MSBuild 
+      name: build-pipeline
       state: present
       url_username: admin 
       url_password: password
@@ -14,8 +14,8 @@
 
   - name: Uninstall plugin
     jenkins_plugin:
-      name: CCM
-      state: absent
+      name: build-pipeline-plugin
+      state: latest
       url_username: admin
       url_password: password
       url: http://localhost:8080
