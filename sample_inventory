@@ -1,0 +1,6 @@
+[Services:vars]
+host_url=http://localhost:8080
+
+[Services]
+
+ccm version="latest" state=latest 
