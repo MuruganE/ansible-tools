@@ -17,8 +17,8 @@
     set_fact:
       jenkins_restart_required: yes
 
-  - name: Restart Jenkins if required
-    service:
-      name: jenkins
-      state: restarted      
-    when: jenkins_restart_required
+  #- name: Restart Jenkins if required
+  #  service:
+  #    name: jenkins
+  #    state: restarted      
+  #  when: jenkins_restart_required
