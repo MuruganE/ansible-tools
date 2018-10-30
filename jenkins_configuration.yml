@@ -1,25 +1,23 @@
-
-# Example of how to authenticate
 ---
 - hosts: localhost
 
   tasks:
   - uri:
       url: '{{ host_url }}/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)'
-      user: {{ host_usr }}
-      password: {{ host_pwd }}
+      user: "{{ host_usr }}"
+      password: "{{ host_pwd }}"
       force_basic_auth: yes
       return_content: yes
     register: crumb
-  
+
   - debug:
       msg: "{{ crumb.content.split(':')[1] }}"
 
   - uri:
       method: POST
       url: '{{ host_url }}/credentials/store/system/domain/_/createCredentials'
-      user: {{ host_usr }}
-      password: {{ host_pwd }}
+      user: "{{ host_usr }}"
+      password: "{{ host_pwd }}"
       force_basic_auth: yes
       follow_redirects: all
       headers:
