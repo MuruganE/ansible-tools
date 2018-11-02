@@ -27,10 +27,10 @@
           "": "0",
           "credentials": {
             "scope": "GLOBAL",
-            "id": "{{ cred_usr_det }}",
+            "id": "{{ cred_id_det }}",
             "username": "{{ cred_usr_det }}",
             "password": "{{ cred_pwd_det }}",
-            "description": "{{ cred_usr_det }}",
+            "description": "{{ cred_id_det }}",
             "$class": "com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl"
           }
         }
