@@ -1,0 +1,41 @@
+---
+- hosts: localhost
+
+  tasks:
+  - uri:
+      url: 'http://localhost:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)'
+      user: "admin"
+      password: "password"
+      force_basic_auth: yes
+      return_content: yes
+    register: crumb
+
+  - debug:
+      msg: "Jenkins-Crumb:{{ crumb.content.split(':')[1] }}"
+
+  - uri:
+      method: POST
+      url: 'http://localhost:8080/credentials/store/system/domain/_/createCredentials'
+      user: "admin"
+      password: "password"
+      force_basic_auth: yes
+      follow_redirects: all
+      headers:
+        Jenkins-Crumb: "{{ crumb.content.split(':')[1] }}"
+      body: |
+        json={
+          "": "0",
+          "credentials": {
+            "scope": "GLOBAL",
+            "id": "cred_id_det3",
+            "description": "cred_id_det3",
+            "kubeconfigsource": '"$class": "com.microsoft.jenkins.kubernetes.credentials.KubeconfigCredentials.DirectEntryKubeconfigSource.DescriptorImpl"',
+            "content": "teate",
+            "$class": "com.microsoft.jenkins.kubernetes.credentials.KubeconfigCredentials"
+          }
+        }
+    register: crumb1
+
+  - debug:
+      msg: "{{ crumb1 }}"
+

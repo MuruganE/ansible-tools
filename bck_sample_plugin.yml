@@ -14,7 +14,7 @@
 
   - name: Uninstall plugin
     jenkins_plugin:
-      name: ccm
+      name: build-pipeline-plugin
       state: latest
       url_username: admin
       url_password: password

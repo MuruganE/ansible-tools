@@ -1,0 +1,9 @@
+# Example of how to authenticate
+---
+- hosts: localhost
+
+  tasks:
+  - name: Install plugin
+    jenkins:
+      
+
